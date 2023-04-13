@@ -40,8 +40,11 @@ def extract_jira_project_id():
 def extract_jira_issue_ids():
     with open('output.txt', 'w') as f:
         subprocess.call('git log -1 --pretty=%B | awk "/release-please--branches--stable--components--release-please-action/{c++;if(c==2)exit} c==1" > output.txt', shell=True)
+        cat_output = subprocess.call('cat output.txt', shell=True)
+        print(cat_output)
     with open('output.txt', 'r') as f:
         commit_message = f.read()
+        print(commit_message)
     jira_issue_ids = set(re.findall(r'\b[A-Z][A-Z0-9_]+-[1-9][0-9]*', commit_message))
     project_name = os.environ['PROJECT_NAME']
 
