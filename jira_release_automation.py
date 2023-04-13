@@ -41,6 +41,7 @@ def extract_jira_issue_ids():
     commit_message = subprocess.check_output('git log -3', shell=True).decode('utf-8')
     print(commit_message)
     jira_issue_ids = set(re.findall(r'\b[A-Z][A-Z0-9_]+-[1-9][0-9]*', commit_message))
+    print(jira_issue_ids)
     project_name = os.environ['PROJECT_NAME']
 
     if project_name:
