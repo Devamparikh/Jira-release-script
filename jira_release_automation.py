@@ -74,7 +74,7 @@ def create_jira_release(jira_release_name):
 
     description = f"Release created automatically for GitHub tag {latest_tag} \n \n"
     changelog = subprocess.check_output('git diff $(git log --merges --pretty=format:%H -n 2 | tail -1) -- CHANGELOG.md | grep "^+" | grep -v "+++" | sed "s/^+//;/^$/d"', shell=True).decode('utf-8')
-    
+    print(changelog)
     if changelog:
         description += changelog
 
