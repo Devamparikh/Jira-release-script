@@ -174,7 +174,6 @@ def add_fix_version_to_issues(jira_issue_ids, jira_release_id):
             raise ValueError(f'Could not able to attach fixVersion for Jira Issue: {issue_id}')
 
 jira_issue_ids = extract_jira_issue_ids()
-print(jira_issue_ids)
 jira_release_name = extract_jira_release_name()
 jira_release_id = create_jira_release(jira_release_name)
 add_fix_version_to_issues(jira_issue_ids, jira_release_id)
