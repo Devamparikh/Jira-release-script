@@ -22,8 +22,14 @@ def get_latest_tag():
     return latest_tag
 
 def extract_jira_release_name():
-    repo_name = os.environ['GITHUB_REPOSITORY']
-    jira_release_name = repo_name.split('/')[1]
+    release_name_prefix = os.environ['RELEASE_NAME_PREFIX']
+    
+    if release_name_prefix:
+        jira_release_name = release_name_prefix
+    else:
+        repo_name = os.environ['GITHUB_REPOSITORY']
+        jira_release_name = repo_name.split('/')[1]
+    
     return jira_release_name
 
 def extract_jira_project_id():
